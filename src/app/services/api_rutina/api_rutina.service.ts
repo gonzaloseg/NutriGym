@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
   private apiKey = '8e9ba524827343a0829d9b5e67aa27fd'; // Clave de la API
-  private apiUrl = 'https://api.spoonacular.com/recipes/complexSearch'; // URL de la API
+  private apiUrl = 'https://spoonacular.com/food-api'; // URL de la API
 
   constructor(private http: HttpClient) {}
 

@@ -1,1 +1,24 @@
-
+<div class="container">
+    <h1>Buscador de Suplementos Alimenticios</h1>
+  
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Buscar suplementos..."
+      (keyup.enter)="buscarRecetas()"
+    />
+    <button (click)="buscarRecetas()">Buscar</button>
+  
+    <div *ngIf="recipes && recipes.results.length > 0">
+      <h2>Resultados:</h2>
+      <div class="recipes-list">
+        <div *ngFor="let recipe of recipes.results" class="recipe-card">
+          <img [src]="recipe.image" [alt]="recipe.title" />
+          <h3>{{ recipe.title }}</h3>
+        </div>
+      </div>
+    </div>
+  
+    <p *ngIf="recipes && recipes.results.length === 0">No se encontraron resultados.</p>
+  </div>
+  
