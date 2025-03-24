@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+
+  insertar(registro:{nombre:string,email:string,password:string}){
+  }
 }
