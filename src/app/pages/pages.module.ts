@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,9 @@ import { FormsModule } from '@angular/forms';
     CestaComponent,
     LoginComponent,
     PerfilComponent
+  ],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class PagesModule { }

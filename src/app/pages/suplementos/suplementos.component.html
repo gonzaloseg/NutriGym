@@ -1,24 +1,29 @@
-<div class="container">
-    <h1>Buscador de Suplementos Alimenticios</h1>
-  
-    <input
-      type="text"
-      [(ngModel)]="searchQuery"
-      placeholder="Buscar suplementos..."
-      (keyup.enter)="buscarRecetas()"
-    />
-    <button (click)="buscarRecetas()">Buscar</button>
-  
-    <div *ngIf="recipes && recipes.results.length > 0">
-      <h2>Resultados:</h2>
-      <div class="recipes-list">
-        <div *ngFor="let recipe of recipes.results" class="recipe-card">
-          <img [src]="recipe.image" [alt]="recipe.title" />
-          <h3>{{ recipe.title }}</h3>
+<div class="container py-5">
+  <h1 class="text-center fw-bold mb-4">🔎 Buscador de Suplementos</h1>
+
+  <div class="d-flex justify-content-center">
+    <div class="input-group w-50">
+      <input type="text" class="form-control rounded-pill px-4 shadow-sm" [(ngModel)]="searchQuery"
+        placeholder="Buscar suplementos..." (keyup.enter)="buscarRecetas()" />
+      <button class="btn btn-dark rounded-pill px-4 ms-2 shadow-sm" (click)="buscarRecetas()">Buscar</button>
+    </div>
+  </div>
+
+  <div *ngIf="recipes?.results?.length > 0" class="mt-5">
+    <h2 class="text-center fw-semibold mb-4">Resultados</h2>
+    <div class="row justify-content-center">
+      <div *ngFor="let recipe of recipes.results" class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card border-0 shadow-sm p-2 rounded-4">
+          <img [src]="recipe.image" [alt]="recipe.title" class="card-img-top rounded-4">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-medium">{{ recipe.title }}</h5>
+          </div>
         </div>
       </div>
     </div>
-  
-    <p *ngIf="recipes && recipes.results.length === 0">No se encontraron resultados.</p>
   </div>
-  
+
+  <p *ngIf="recipes?.results?.length === 0" class="text-center text-muted mt-4">
+    ❌ No se encontraron resultados.
+  </p>
+</div>
