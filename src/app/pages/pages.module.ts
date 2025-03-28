@@ -9,6 +9,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { TerminosComponent } from './terminos/terminos.component';
+import { ContactaComponent } from './contacta/contacta.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     InicioComponent,
     CestaComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    TerminosComponent,
+    ContactaComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,9 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     InicioComponent,
     CestaComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    TerminosComponent,
+    ContactaComponent
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
