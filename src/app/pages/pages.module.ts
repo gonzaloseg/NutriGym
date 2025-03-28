@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TerminosComponent } from './terminos/terminos.component';
 import { ContactaComponent } from './contacta/contacta.component';
+import { ReactiveFormsModule } from '@angular/forms';  
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ContactaComponent } from './contacta/contacta.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     SuplementosComponent,

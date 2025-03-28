@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
 import { ServicesComponent } from './services/services.component';
+import { ReactiveFormsModule } from '@angular/forms';  // Importa ReactiveFormsModule
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ServicesComponent } from './services/services.component';
     PagesModule,
     ComponentsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
    
 
   ],
