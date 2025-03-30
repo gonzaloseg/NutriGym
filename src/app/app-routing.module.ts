@@ -8,6 +8,8 @@ import { RutinasComponent } from './pages/rutinas/rutinas.component';
 import { SuplementosComponent } from './pages/suplementos/suplementos.component'; 
 import { TerminosComponent } from './pages/terminos/terminos.component';
 import { ContactaComponent } from './pages/contacta/contacta.component';
+import { FavoritosComponent } from './pages/favoritos/favoritos.component';
+import { PoliticaprivaComponent } from './pages/politicapriva/politicapriva.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'suplementos', component: SuplementosComponent },
   { path: 'terminos', component: TerminosComponent },
   { path: 'contacta', component: ContactaComponent },
+  { path: 'favoritos', component: FavoritosComponent },
+  { path: 'politicapriva', component: PoliticaprivaComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 
 ];

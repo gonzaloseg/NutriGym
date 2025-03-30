@@ -11,7 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TerminosComponent } from './terminos/terminos.component';
 import { ContactaComponent } from './contacta/contacta.component';
-import { ReactiveFormsModule } from '@angular/forms';  
+import { ReactiveFormsModule } from '@angular/forms';
+import { FavoritosComponent } from './favoritos/favoritos.component';
+import { PoliticaprivaComponent } from './politicapriva/politicapriva.component';  
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     PerfilComponent,
     TerminosComponent,
-    ContactaComponent
+    ContactaComponent,
+    FavoritosComponent,
+    PoliticaprivaComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     PerfilComponent,
     TerminosComponent,
-    ContactaComponent
+    ContactaComponent,
+    FavoritosComponent,
+    PoliticaprivaComponent
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
