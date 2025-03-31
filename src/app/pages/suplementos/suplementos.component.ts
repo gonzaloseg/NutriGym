@@ -7,25 +7,9 @@ import { ApiService } from '../../services/api_rutina/api_rutina.service';
   styleUrls: ['./suplementos.component.css']
 })
 export class SuplementosComponent implements OnInit {
-  /*searchQuery: string = '';
-  recipes: any;
-
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit() {
-    this.buscarRecetas(); // Carga resultados por defecto (opcional)
-  }
-
-  buscarRecetas() {
-    if (!this.searchQuery.trim()) return;
-
-    this.apiService.getRecipes(this.searchQuery).subscribe(response => {
-      this.recipes = response;
-      console.log(this.recipes);
-    });
-  }*/
+ 
     searchQuery: string = '';
-    recipes: any[] = [];
+    recipes: any[] = [];  
   
     constructor(private apiService: ApiService) {}
   
