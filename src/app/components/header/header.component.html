@@ -5,12 +5,21 @@
     </div>
     <nav>
         <a routerLink="/inicio" routerLinkActive="active">inicio</a> 
-        <a  routerLink="/suplementos" routerLinkActive="active">Productos</a>
-        <a  routerLink="/favoritos" routerLinkActive="active">favoritos</a>
-        <a  routerLink="/cesta" routerLinkActive="active">cesta</a>
-       
+        
+        <div class="dropdown">
+            <a>Productos</a>
+            <div class="dropdown-content">
+                <a routerLink="/ropa" routerLinkActive="active">Ropa</a>
+                <a routerLink="/suplementos"  routerLinkActive="active">Suplementos</a>
+                <a routerLink="/recetas" routerLinkActive="active">Recetas</a>
+                <a routerLink="/rutinas" routerLinkActive="active">Rutinas</a>
+            </div>
+        </div>
+
+        <a routerLink="/favoritos" routerLinkActive="active">favoritos</a>
+        <a routerLink="/cesta" routerLinkActive="active">cesta</a>
         <a routerLink="/perfil" routerLinkActive="active">
             <i class="bi bi-person"></i>
-          </a>
+        </a>
     </nav>
 </header>

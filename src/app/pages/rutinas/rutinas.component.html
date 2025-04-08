@@ -1,1 +1,19 @@
-<p>rutinas works!</p>
+<div class="container">
+    <h2 class="text-center mt-4">Ejercicios Disponibles</h2>
+    
+    <div *ngIf="ejercicios.length === 0" class="alert alert-warning">
+      No hay ejercicios disponibles.
+    </div>
+  
+    <div class="row">
+      <div class="col-md-4" *ngFor="let ejercicio of ejercicios">
+        <div class="card mb-4">
+          <img *ngIf="ejercicio.image" class="card-img-top" [src]="ejercicio.image" alt="{{ ejercicio.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ ejercicio.name }}</h5>
+            <p class="card-text">{{ ejercicio.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

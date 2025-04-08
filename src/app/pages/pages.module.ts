@@ -13,7 +13,9 @@ import { TerminosComponent } from './terminos/terminos.component';
 import { ContactaComponent } from './contacta/contacta.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FavoritosComponent } from './favoritos/favoritos.component';
-import { PoliticaprivaComponent } from './politicapriva/politicapriva.component';  
+import { PoliticaprivaComponent } from './politicapriva/politicapriva.component';
+import { RecetasComponent } from './recetas/recetas.component';
+import { RopaComponent } from './ropa/ropa.component';  
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PoliticaprivaComponent } from './politicapriva/politicapriva.component'
     TerminosComponent,
     ContactaComponent,
     FavoritosComponent,
-    PoliticaprivaComponent
+    PoliticaprivaComponent,
+    RecetasComponent,
+    RopaComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +48,9 @@ import { PoliticaprivaComponent } from './politicapriva/politicapriva.component'
     TerminosComponent,
     ContactaComponent,
     FavoritosComponent,
-    PoliticaprivaComponent
+    PoliticaprivaComponent,
+    RecetasComponent,
+    RopaComponent
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

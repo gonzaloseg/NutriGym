@@ -10,6 +10,8 @@ import { TerminosComponent } from './pages/terminos/terminos.component';
 import { ContactaComponent } from './pages/contacta/contacta.component';
 import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 import { PoliticaprivaComponent } from './pages/politicapriva/politicapriva.component';
+import{RecetasComponent} from './pages/recetas/recetas.component';
+import { RopaComponent } from './pages/ropa/ropa.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'contacta', component: ContactaComponent },
   { path: 'favoritos', component: FavoritosComponent },
   { path: 'politicapriva', component: PoliticaprivaComponent },
+  { path: 'recetas', component: RecetasComponent },
+  { path: 'ropa', component: RopaComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 
 ];
