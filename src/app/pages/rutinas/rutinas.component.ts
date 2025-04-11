@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WgerService } from '../../services/api_wger_rutinas/api_wger_rutinas.service';
+import { Category, Ejercicio } from '../../interfaces/rutinas';
 
 @Component({
   selector: 'app-rutinas',
@@ -8,24 +9,49 @@ import { WgerService } from '../../services/api_wger_rutinas/api_wger_rutinas.se
 })
 export class RutinasComponent implements OnInit {
 
-  ejercicios: any[] = [];  // Creamos una variable para almacenar los ejercicios
+  ejercicios: Ejercicio[] = [];
+  ejerciciosFiltrados: Ejercicio[] = [];
+  categorias: Category[] = [];
+  categoriaSeleccionada: number = 0; // 0 significa 'todas'
 
-  constructor(private wgerService: WgerService) {}
+  constructor(private wgerService: WgerService) { }
 
   ngOnInit(): void {
-    this.getEjercicios();  // Llamamos al método para obtener ejercicios
+    this.getEjercicios();
+    this.getCategorias();
   }
 
-  // Método para obtener los ejercicios del servicio
   getEjercicios(): void {
-    this.wgerService.getExercises().subscribe(
-      (data: any) => {
-        this.ejercicios = data.results;  // Asignamos los resultados a la variable ejercicios
-        console.log('Ejercicios: ', this.ejercicios);  // Mostramos los datos en consola
+    this.wgerService.getExercises().subscribe({
+      next: (data) => {
+        this.ejercicios = data;
+        this.ejerciciosFiltrados = data;
+        console.log(this.ejercicios); // <-- VERIFICAMOS AQUÍ
       },
-      (error) => {
-        console.error('Error al obtener ejercicios', error);  // Mostramos errores si ocurren
+      error: (err) => {
+        console.error(err);
       }
-    );
+    });
+  }
+
+  getCategorias(): void {
+    this.wgerService.getcategory().subscribe({
+      next: (datos) => {
+        this.categorias = datos; // Ya es un array
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  filtrarPorCategoria(): void {
+    if (this.categoriaSeleccionada === 0) {
+      this.ejerciciosFiltrados = this.ejercicios;
+    } else {
+      this.ejerciciosFiltrados = this.ejercicios.filter(
+        (ej) => ej.category.id === this.categoriaSeleccionada
+      );
+    }
   }
 }

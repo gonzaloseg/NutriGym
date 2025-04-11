@@ -1,19 +1,37 @@
-<div class="container">
-    <h2 class="text-center mt-4">Ejercicios Disponibles</h2>
-    
-    <div *ngIf="ejercicios.length === 0" class="alert alert-warning">
-      No hay ejercicios disponibles.
-    </div>
-  
-    <div class="row">
-      <div class="col-md-4" *ngFor="let ejercicio of ejercicios">
-        <div class="card mb-4">
-          <img *ngIf="ejercicio.image" class="card-img-top" [src]="ejercicio.image" alt="{{ ejercicio.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ ejercicio.name }}</h5>
-            <p class="card-text">{{ ejercicio.description }}</p>
+<div class="container mb-5">
+  <h2 class="text-center mt-4">Ejercicios Disponibles</h2>
+
+  <!-- Filtro por categoría -->
+  <div class="mb-4 text-center">
+    <label for="categoria">Filtrar por categoría:</label>
+    <select id="categoria" class="form-select w-auto d-inline-block mx-2"
+            [(ngModel)]="categoriaSeleccionada"
+            (change)="filtrarPorCategoria()">
+      <option [value]="0">Todas</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.name }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="ejerciciosFiltrados.length === 0" class="alert alert-warning">
+    No hay ejercicios disponibles para esta categoría.
+  </div>
+
+  <!-- Grid de ejercicios -->
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let ejercicio of ejerciciosFiltrados">
+      <a routerLink="/{{ ejercicio.id }}">
+        <div class="card h-100 shadow position-relative">
+          <div class="image-container">
+            <img *ngIf="ejercicio.images.length > 0" [src]="ejercicio.images[0].image" class="card-img-top"
+              alt="{{ ejercicio.translations[0].name || 'Ejercicio sin nombre' }}">
+            <img *ngIf="ejercicio.images.length === 0" src="/imagenes/no-image.webp" class="card-img-top"
+              alt="{{ ejercicio.translations[0].name || 'Ejercicio sin nombre' }}">
+          </div>
+          <div class="exercise-info">
+            <h5 class="exercise-title"><i class="bi bi-tag-fill"></i> {{ ejercicio.category.name }}</h5>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
+</div>

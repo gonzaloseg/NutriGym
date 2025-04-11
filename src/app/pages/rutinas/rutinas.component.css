@@ -1,4 +1,43 @@
-.card {
-    border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
+.card img {
+  object-fit: cover;
+}
+
+.exercise-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  color: white;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 4px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.exercise-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+/* Estilos para las imágenes */
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Relación de aspecto 1:1 (cuadrado) */
+  overflow: hidden;
+  background: #f0f0f0; /* Fondo para imágenes faltantes */
+}
+
+.image-container img,
+.image-container .no-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajuste de imagen manteniendo relación de aspecto */
+}
