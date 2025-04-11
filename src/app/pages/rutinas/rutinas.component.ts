@@ -46,11 +46,11 @@ export class RutinasComponent implements OnInit {
   }
 
   filtrarPorCategoria(): void {
-    if (this.categoriaSeleccionada === 0) {
+    if (this.categoriaSeleccionada == 0) {
       this.ejerciciosFiltrados = this.ejercicios;
     } else {
       this.ejerciciosFiltrados = this.ejercicios.filter(
-        (ej) => ej.category.id === this.categoriaSeleccionada
+        (ej) => ej.category.id == this.categoriaSeleccionada
       );
     }
   }
