@@ -1,0 +1,35 @@
+<form class="form-container" (ngSubmit)="registrar()">
+    <h2>Registro de Usuario</h2>
+  
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" [(ngModel)]="usuario.nombre" name="nombre" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="correoElectronico">Correo electrónico</label>
+      <input id="correoElectronico" type="email" [(ngModel)]="usuario.correoElectronico" name="correoElectronico" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input id="contrasena" type="password" [(ngModel)]="usuario.contrasena" name="contrasena" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="altura">Altura (cm)</label>
+      <input id="altura" type="number" [(ngModel)]="usuario.altura" name="altura" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="peso">Peso (kg)</label>
+      <input id="peso" type="number" [(ngModel)]="usuario.peso" name="peso" required>
+    </div>
+  
+    <button type="submit" class="btn">Registrarse</button>
+  
+    <p class="login-link">
+      ¿Ya tienes cuenta? <a routerLink="/login" routerLinkActive="active">Inicia sesión</a>
+    </p>
+  </form>
+  

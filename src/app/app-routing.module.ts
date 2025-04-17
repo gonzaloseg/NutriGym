@@ -12,21 +12,24 @@ import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 import { PoliticaprivaComponent } from './pages/politicapriva/politicapriva.component';
 import{RecetasComponent} from './pages/recetas/recetas.component';
 import { RopaComponent } from './pages/ropa/ropa.component';
+import{sesionGuard} from './guards/sesion.guard';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'perfil', component: PerfilComponent },
-  { path: 'cesta', component: CestaComponent },
+  { path: 'perfil', component: PerfilComponent, canActivate: [sesionGuard] },
+  { path: 'cesta', component: CestaComponent, canActivate: [sesionGuard] },
   { path: 'inicio', component: InicioComponent },
   { path: 'rutinas', component: RutinasComponent },
   { path: 'suplementos', component: SuplementosComponent },
   { path: 'terminos', component: TerminosComponent },
   { path: 'contacta', component: ContactaComponent },
-  { path: 'favoritos', component: FavoritosComponent },
+  { path: 'favoritos', component: FavoritosComponent, canActivate: [sesionGuard] },
   { path: 'politicapriva', component: PoliticaprivaComponent },
   { path: 'recetas', component: RecetasComponent },
   { path: 'ropa', component: RopaComponent },
+  {path: 'register', component: RegisterComponent},
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 
 ];
