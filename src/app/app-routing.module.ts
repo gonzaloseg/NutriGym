@@ -14,7 +14,9 @@ import{RecetasComponent} from './pages/recetas/recetas.component';
 import { RopaComponent } from './pages/ropa/ropa.component';
 import{sesionGuard} from './guards/sesion.guard';
 import { RegisterComponent } from './pages/register/register.component';
-
+import{EndomorfoComponent} from './pages/endomorfo/endomorfo.component';
+import{MesomorfoComponent} from './pages/mesomorfo/mesomorfo.component';
+import{EctomorfoComponent} from './pages/ectomorfo/ectomorfo.component';  
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +32,9 @@ const routes: Routes = [
   { path: 'recetas', component: RecetasComponent },
   { path: 'ropa', component: RopaComponent },
   {path: 'register', component: RegisterComponent},
+  {path: 'endomorfo', component: EndomorfoComponent},
+  {path: 'mesomorfo', component: MesomorfoComponent},
+  {path: 'ectomorfo', component: EctomorfoComponent},
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 
 ];

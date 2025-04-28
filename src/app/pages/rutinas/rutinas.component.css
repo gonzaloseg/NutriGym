@@ -1,43 +1,23 @@
-.card img {
-  object-fit: cover;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.exercise-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
-  color: white;
-  padding-top: 10px;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: 4px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+.card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.exercise-title {
-  font-size: 16px;
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.card-title {
   font-weight: bold;
-  margin-bottom: 2px;
 }
-
-/* Estilos para las imágenes */
-.image-container {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; /* Relación de aspecto 1:1 (cuadrado) */
-  overflow: hidden;
-  background: #f0f0f0; /* Fondo para imágenes faltantes */
+header {
+  background: linear-gradient(90deg, #28a745, #218838);
 }
-
-.image-container img,
-.image-container .no-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ajuste de imagen manteniendo relación de aspecto */
+footer {
+  background: #212529;
+}
+ul li {
+  font-size: 1.1rem;
 }

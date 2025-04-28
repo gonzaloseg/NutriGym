@@ -16,7 +16,10 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
 import { PoliticaprivaComponent } from './politicapriva/politicapriva.component';
 import { RecetasComponent } from './recetas/recetas.component';
 import { RopaComponent } from './ropa/ropa.component';
-import { RegisterComponent } from './register/register.component';  
+import { RegisterComponent } from './register/register.component';
+import { EndomorfoComponent } from './endomorfo/endomorfo.component';
+import { MesomorfoComponent } from './mesomorfo/mesomorfo.component';
+import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';  
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { RegisterComponent } from './register/register.component';
     PoliticaprivaComponent,
     RecetasComponent,
     RopaComponent,
-    RegisterComponent
+    RegisterComponent,
+    EndomorfoComponent,
+    MesomorfoComponent,
+    EctomorfoComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +59,10 @@ import { RegisterComponent } from './register/register.component';
     PoliticaprivaComponent,
     RecetasComponent,
     RopaComponent,
-    RegisterComponent
+    RegisterComponent,
+    EndomorfoComponent,
+    MesomorfoComponent,
+    EctomorfoComponent
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
