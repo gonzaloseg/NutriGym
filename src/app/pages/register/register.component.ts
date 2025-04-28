@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import{UsuarioService} from '../../services/api_usuario_stock/api_usuario_stock.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,16 +15,22 @@ usuario = {
     peso: null
   };
 
-  constructor(private api_usuario_stock: UsuarioService) { }
+  constructor(
+    private api_usuario_stock: UsuarioService,
+    private router: Router
+  ) {}
 
   registrar() {
     this.api_usuario_stock.registrar(this.usuario).subscribe({
       next: res => {
         console.log('Registrado correctamente:', res);
+        this.router.navigate(['/login']); // Redirección aquí
       },
       error: err => {
         console.error('Error al registrar:', err);
       }
+     
     });
+   
   }
 }

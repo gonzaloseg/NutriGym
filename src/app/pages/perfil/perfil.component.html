@@ -1,1 +1,14 @@
-<p>perfil works!</p>
+<div class="container mt-5">
+    <h2>Perfil del Usuario</h2>
+    <div class="card mt-4">
+      <div class="card-body">
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</p>
+        <p><strong>Altura:</strong> {{ usuario.altura }} cm</p>
+        <p><strong>Peso:</strong> {{ usuario.peso }} kg</p>
+      </div>
+    </div>
+  
+    <button class="btn btn-danger mt-4" (click)="cerrarSesion()">Cerrar sesión</button>
+  </div>
+  
