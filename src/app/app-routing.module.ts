@@ -17,6 +17,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import{EndomorfoComponent} from './pages/endomorfo/endomorfo.component';
 import{MesomorfoComponent} from './pages/mesomorfo/mesomorfo.component';
 import{EctomorfoComponent} from './pages/ectomorfo/ectomorfo.component';  
+import { CrearproductosComponent } from './pages/productos/crearproductos/crearproductos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'endomorfo', component: EndomorfoComponent},
   {path: 'mesomorfo', component: MesomorfoComponent},
   {path: 'ectomorfo', component: EctomorfoComponent},
+  {path: 'productos/crearproductos', component: CrearproductosComponent},
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 
 ];

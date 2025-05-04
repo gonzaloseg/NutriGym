@@ -19,7 +19,8 @@ import { RopaComponent } from './ropa/ropa.component';
 import { RegisterComponent } from './register/register.component';
 import { EndomorfoComponent } from './endomorfo/endomorfo.component';
 import { MesomorfoComponent } from './mesomorfo/mesomorfo.component';
-import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';  
+import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';
+import { CrearproductosComponent } from './productos/crearproductos/crearproductos.component';  
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';
     RegisterComponent,
     EndomorfoComponent,
     MesomorfoComponent,
-    EctomorfoComponent
+    EctomorfoComponent,
+    CrearproductosComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +64,9 @@ import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';
     RegisterComponent,
     EndomorfoComponent,
     MesomorfoComponent,
-    EctomorfoComponent
+    EctomorfoComponent,
+    CrearproductosComponent
+
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
