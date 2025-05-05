@@ -1,1 +1,15 @@
-<p>ropa works!</p>
+<div class="productos-container">
+    <h2>Productos de Ropa para Hombre</h2>
+  
+    <div *ngIf="productos.length === 0">
+      <p>No hay productos disponibles.</p>
+    </div>
+  
+    <div class="producto" *ngFor="let producto of productos">
+      <h3>{{ producto.nombre }}</h3>
+      <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="producto-img" />
+      <p>Precio: {{ producto.precio | currency:'EUR' }}</p>
+      <p>{{ producto.stock }} en stock</p>
+    </div>
+  </div>
+  
