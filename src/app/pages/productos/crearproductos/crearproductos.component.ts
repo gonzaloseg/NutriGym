@@ -6,10 +6,11 @@ import { Producto } from '../../../interfaces/producto';
 @Component({
   selector: 'app-crearproductos',
   templateUrl: './crearproductos.component.html',
-  styleUrl: './crearproductos.component.css'
+  styleUrls: ['./crearproductos.component.css'] // ← corregido aquí
 })
 export class CrearproductosComponent {
   productoForm: FormGroup;
+  productoId: number | null = null; // Para usar en actualizar/eliminar
 
   constructor(private fb: FormBuilder, private productoservice: productoservice) {
     this.productoForm = this.fb.group({
@@ -22,7 +23,7 @@ export class CrearproductosComponent {
   }
 
   onSubmit(): void {
-    if (this.productoForm.valid ) {
+    if (this.productoForm.valid) {
       const producto: Producto = {
         nombre: this.productoForm.value.nombre,
         precio: this.productoForm.value.precio,
@@ -30,9 +31,11 @@ export class CrearproductosComponent {
         categoria: this.productoForm.value.categoria,
         imagen: this.productoForm.value.imagen
       };
+
       this.productoservice.crearproductos(producto).subscribe({
         next: res => {
           console.log('Producto creado correctamente:', res);
+          // ← guarda el ID para futuras acciones
         },
         error: err => {
           console.error('Error al crear producto:', err);
@@ -41,5 +44,38 @@ export class CrearproductosComponent {
     }
   }
 
-  
+  onActualizarProducto(): void {
+    if (this.productoForm.valid && this.productoId !== null) {
+      const productoActualizado: Producto = {
+        id: this.productoId,
+        nombre: this.productoForm.value.nombre,
+        precio: this.productoForm.value.precio,
+        stock: this.productoForm.value.stock,
+        categoria: this.productoForm.value.categoria,
+        imagen: this.productoForm.value.imagen
+      };
+
+      this.productoservice.actualizarproductos(productoActualizado).subscribe({
+        next: res => {
+          console.log('Producto actualizado correctamente:', res);
+        },
+        error: err => {
+          console.error('Error al actualizar producto:', err);
+        }
+      });
+    }
+  }
+
+  onEliminarProducto(): void {
+    if (this.productoId !== null) {
+      this.productoservice.eliminarproductos(this.productoId).subscribe({
+        next: res => {
+          console.log('Producto eliminado correctamente:', res);
+        },
+        error: err => {
+          console.error('Error al eliminar producto:', err);
+        }
+      });
+    }
+  }
 }

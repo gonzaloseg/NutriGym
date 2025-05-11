@@ -1,38 +1,42 @@
 <div class="form-container">
-    <h2>Nuevo Producto</h2>
-    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label>Nombre del producto</label>
-        <input type="text" formControlName="nombre" required>
-      </div>
-  
-      <div class="form-group">
-        <label>Precio</label>
-        <input type="number" formControlName="precio" step="0.10" required>
-      </div>
-  
-      <div class="form-group">
-        <label>Stock</label>
-        <input type="number" formControlName="stock" required>
-      </div>
-  
-      <div class="form-group">
-        <label>Categoría</label>
-        <select formControlName="categoria" required>
-          <option value="">Seleccione una categoría</option>
-          <option value="suplementacion">suplementacion</option>
-          <option value="ropa_hombre">ropa hombre</option>
-          <option value="ropa_mujer">ropa mujer</option>
-          <option value="otros">Otros</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label>Imagen</label>
-        <input type="text" formControlName="imagen" required>
-      </div>
-  
+  <h2>Nuevo Producto</h2>
+  <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Nombre del producto</label>
+      <input type="text" formControlName="nombre" required>
+    </div>
+
+    <div class="form-group">
+      <label>Precio</label>
+      <input type="number" formControlName="precio" step="0.10" required>
+    </div>
+
+    <div class="form-group">
+      <label>Stock</label>
+      <input type="number" formControlName="stock" required>
+    </div>
+
+    <div class="form-group">
+      <label>Categoría</label>
+      <select formControlName="categoria" required>
+        <option value="">Seleccione una categoría</option>
+        <option value="suplementacion">suplementación</option>
+        <option value="ropa_hombre">ropa hombre</option>
+        <option value="ropa_mujer">ropa mujer</option>
+        <option value="otros">otros</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Imagen</label>
+      <input type="text" formControlName="imagen" required>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="form-buttons">
       <button type="submit" [disabled]="productoForm.invalid">Guardar Producto</button>
-    </form>
-  </div>
-  
+      <button type="button" (click)="onActualizarProducto()" [disabled]="!productoId">Actualizar Producto</button>
+      <button type="button" (click)="onEliminarProducto()" [disabled]="!productoId">Eliminar Producto</button>
+    </div>
+  </form>
+</div>
