@@ -18,4 +18,8 @@ export class UsuarioService {
   iniciarSesion(credentials: { correoElectronico: string, contrasena: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`,credentials);
   }
+ 
+  actualizarPerfil(id: string, perfil: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/usuarios/${id}`, perfil);
+}
 }

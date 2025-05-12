@@ -1,14 +1,16 @@
 <div class="container mt-5">
-    <h2>Perfil del Usuario</h2>
-    <div class="card mt-4">
-      <div class="card-body">
-        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
-        <p><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</p>
-        <p><strong>Altura:</strong> {{ usuario.altura }} cm</p>
-        <p><strong>Peso:</strong> {{ usuario.peso }} kg</p>
+  <h2>Perfil del Usuario</h2>
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="text-center mb-4" *ngIf="usuario.foto">
+        <img [src]="usuario.fotoPerfil" alt="Foto de perfil" class="img-thumbnail" style="max-width: 200px;" />
       </div>
+      <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+      <p><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</p>
+      <p><strong>Altura:</strong> {{ usuario.altura }} cm</p>
+      <p><strong>Peso:</strong> {{ usuario.peso }} kg</p>
     </div>
-  
-    <button class="btn btn-danger mt-4" (click)="cerrarSesion()">Cerrar sesión</button>
   </div>
-  
+
+  <button class="btn btn-danger mt-4" (click)="cerrarSesion()">Cerrar sesión</button>
+</div>

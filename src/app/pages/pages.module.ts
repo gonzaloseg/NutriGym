@@ -20,7 +20,8 @@ import { RegisterComponent } from './register/register.component';
 import { EndomorfoComponent } from './endomorfo/endomorfo.component';
 import { MesomorfoComponent } from './mesomorfo/mesomorfo.component';
 import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';
-import { CrearproductosComponent } from './productos/crearproductos/crearproductos.component';  
+import { CrearproductosComponent } from './productos/crearproductos/crearproductos.component';
+import { EditarperfilComponent } from './editarperfil/editarperfil.component';  
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { CrearproductosComponent } from './productos/crearproductos/crearproduct
     EndomorfoComponent,
     MesomorfoComponent,
     EctomorfoComponent,
-    CrearproductosComponent
+    CrearproductosComponent,
+    EditarperfilComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -65,7 +68,8 @@ import { CrearproductosComponent } from './productos/crearproductos/crearproduct
     EndomorfoComponent,
     MesomorfoComponent,
     EctomorfoComponent,
-    CrearproductosComponent
+    CrearproductosComponent,
+    EditarperfilComponent
 
   ],
   providers: [

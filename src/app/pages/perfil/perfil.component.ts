@@ -27,4 +27,7 @@ export class PerfilComponent implements OnInit {
     sessionStorage.removeItem('usuario');
     this.router.navigate(['/login']);
   }
+  actualizarPerfil() {
+    this.router.navigate(['/perfil']);
+  }
 }

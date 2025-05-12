@@ -12,7 +12,8 @@ usuario = {
     correoElectronico: '',
     contrasena: '',
     altura: null,
-    peso: null
+    peso: null,
+    foto: ''
   };
 
   constructor(
