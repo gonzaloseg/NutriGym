@@ -1,16 +1,29 @@
-<div class="container mt-5">
-  <h2>Perfil del Usuario</h2>
-  <div class="card mt-4">
-    <div class="card-body">
-      <div class="text-center mb-4" *ngIf="usuario.foto">
-        <img [src]="usuario.fotoPerfil" alt="Foto de perfil" class="img-thumbnail" style="max-width: 200px;" />
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <h2 class="text-center mb-4">Perfil del Usuario</h2>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <div class="text-center mb-4" *ngIf="usuario.foto">
+            <img [src]="usuario.foto" alt="Foto de perfil" class="img-fluid rounded-circle border" style="max-width: 150px;" />
+          </div>
+
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item"><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+            <li class="list-group-item"><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</li>
+            <li class="list-group-item"><strong>Altura:</strong> {{ usuario.altura }} cm</li>
+            <li class="list-group-item"><strong>Peso:</strong> {{ usuario.peso }} kg</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar sesión</button>
+            <a routerLink="/editarperfil" routerLinkActive="active" class="btn btn-outline-primary">Editar Perfil</a>
+          </div>
+
+        </div>
       </div>
-      <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
-      <p><strong>Correo Electrónico:</strong> {{ usuario.correoElectronico }}</p>
-      <p><strong>Altura:</strong> {{ usuario.altura }} cm</p>
-      <p><strong>Peso:</strong> {{ usuario.peso }} kg</p>
     </div>
   </div>
-
-  <button class="btn btn-danger mt-4" (click)="cerrarSesion()">Cerrar sesión</button>
 </div>

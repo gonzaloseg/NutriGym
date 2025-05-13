@@ -10,6 +10,7 @@ export class EditarperfilComponent{
 usuario = {
   id: '', // Asegúrate de tener el ID
   nombre: '',
+  correoElectronico: '',
   contrasena: '',
   altura: null,
   peso: null,
@@ -24,17 +25,29 @@ constructor(
 ) {}
 
 ngOnInit() {
-  const idUsuario = sessionStorage.getItem('usuarioId'); // o desde tu AuthService
-  if (idUsuario) {
-    this.modoEdicion = true;
-    this.api_usuario_stock.obtenerPerfil(idUsuario).subscribe({
-      next: (data) => {
-        this.usuario = data;
-      },
-      error: (err) => {
-        console.error('Error al cargar datos del usuario:', err);
-      }
-    });
+  const usuarioString = sessionStorage.getItem('usuario');
+  
+  if (usuarioString) {
+    const usuarioObj = JSON.parse(usuarioString); // convertimos el string en objeto
+    const idUsuario = usuarioObj.id;
+
+    console.log('ID del usuario:', idUsuario);
+
+    if (idUsuario) {
+      this.modoEdicion = true;
+
+      this.api_usuario_stock.obtenerPerfil(idUsuario).subscribe({
+        next: (data) => {
+          this.usuario = data;
+          console.log('Datos obtenidos:', data);
+        },
+        error: (err) => {
+          console.error('Error al cargar datos del usuario:', err);
+        }
+      });
+    }
+  } else {
+    console.warn('No se encontró el usuario en sessionStorage');
   }
 }
 
@@ -42,11 +55,12 @@ actualizar() {
   this.api_usuario_stock.actualizarPerfil(this.usuario.id, this.usuario).subscribe({
     next: res => {
       console.log('Perfil actualizado correctamente:', res);
-      // Redireccionar si deseas:
-      // this.router.navigate(['/dashboard']);
+      sessionStorage.setItem('usuario', JSON.stringify(this.usuario));
+      this.router.navigate(['/perfil']);
     },
     error: err => {
       console.error('Error al actualizar perfil:', err);
+
     }
   });
 }

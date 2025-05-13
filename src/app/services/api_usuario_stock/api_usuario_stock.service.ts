@@ -20,9 +20,9 @@ export class UsuarioService {
   }
  
   actualizarPerfil(id: string, perfil: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/usuarios/${id}`, perfil);
+  return this.http.put(`${this.apiUrl}/${id}`, perfil);
 }
 obtenerPerfil(id: string): Observable<any> {
-  return this.http.get(`${this.apiUrl}/usuarios/${id}`);
+  return this.http.get(`${this.apiUrl}/${id}`);
 }
 }

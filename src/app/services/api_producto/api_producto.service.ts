@@ -28,5 +28,8 @@ export class productoservice {
   obtenerproductoscategoria(categoria?: string): Observable<Producto[]> {
     return this.http.get(`${this.apiUrl}?categoria=${categoria}`) as Observable<Producto[]>;
   }
+  obtenerproductoporid(id: number): Observable<Producto> {
+    return this.http.get(`${this.apiUrl}/${id}`) as Observable<Producto>;
+  }
    
 }
