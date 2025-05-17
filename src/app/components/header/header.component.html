@@ -13,6 +13,7 @@
                 <a routerLink="/suplementos"  routerLinkActive="active">Suplementos</a>
                 <a routerLink="/recetas" routerLinkActive="active">Recetas</a>
                 <a routerLink="/rutinas" routerLinkActive="active">Rutinas</a>
+                <a *ngIf="roleIsAdmin()" routerLink="/productos/listadoproductos" routerLinkActive="active">editar Producto</a>
             </div>
         </div>
 

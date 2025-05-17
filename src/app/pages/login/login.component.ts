@@ -21,9 +21,11 @@ export class LoginComponent {
   iniciarSesion() {
     this.api_usuario_stock.iniciarSesion(this.usuario).subscribe({
       next: res => {
+        console.log("Rol:",res.rol_usuario);
         console.log('login correcto:', res);
         sessionStorage.setItem('usuario', JSON.stringify(res));
         this.router.navigate(['/inicio']); // Redirección aquí
+
       },
       error: err => {
         console.error('Error al login:', err);

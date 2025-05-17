@@ -8,13 +8,15 @@ import { Router } from '@angular/router';
 })
 export class EditarperfilComponent{
 usuario = {
-  id: '', // Asegúrate de tener el ID
+  id: '', 
   nombre: '',
   correoElectronico: '',
   contrasena: '',
   altura: null,
   peso: null,
-  foto: ''
+  foto: '',
+  rol_usuario: ''
+
 };
 
 modoEdicion = false;
@@ -28,7 +30,7 @@ ngOnInit() {
   const usuarioString = sessionStorage.getItem('usuario');
   
   if (usuarioString) {
-    const usuarioObj = JSON.parse(usuarioString); // convertimos el string en objeto
+    const usuarioObj = JSON.parse(usuarioString); 
     const idUsuario = usuarioObj.id;
 
     console.log('ID del usuario:', idUsuario);

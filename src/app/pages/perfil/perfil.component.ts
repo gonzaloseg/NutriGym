@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../services/api_usuario_stock/api_usuario_stock.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class PerfilComponent implements OnInit {
   usuario: any = {};
 
-  constructor(private router: Router) {}
+  
+  constructor(private router: Router, private api_usuario_stock: UsuarioService) { }
 
   ngOnInit() {
     const datos = sessionStorage.getItem('usuario');
@@ -24,8 +26,9 @@ export class PerfilComponent implements OnInit {
   }
 
   cerrarSesion() {
-    sessionStorage.removeItem('usuario');
+    this.api_usuario_stock.cerrarSesion();
     this.router.navigate(['/login']);
+    
   }
   actualizarPerfil() {
     this.router.navigate(['/perfil']);

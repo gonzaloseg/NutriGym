@@ -13,7 +13,8 @@ usuario = {
     contrasena: '',
     altura: null,
     peso: null,
-    foto: ''
+    foto: '',
+    rol_usuario: ''
   };
 
   constructor(

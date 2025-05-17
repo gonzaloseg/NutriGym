@@ -19,7 +19,9 @@ import{MesomorfoComponent} from './pages/mesomorfo/mesomorfo.component';
 import{EctomorfoComponent} from './pages/ectomorfo/ectomorfo.component';  
 import { CrearproductosComponent } from './pages/productos/crearproductos/crearproductos.component';
 import { EditarperfilComponent } from './pages/editarperfil/editarperfil.component';
-import{DetalleproductoComponent} from './pages/detalleproducto/detalleproducto.component';
+import{DetalleproductoComponent} from './pages/productos/detalleproducto/detalleproducto.component';
+import { ListadoproductosComponent } from './pages/productos/listadoproductos/listadoproductos.component';
+import { EditarproductoComponent } from './pages/productos/editarproducto/editarproducto.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +43,9 @@ const routes: Routes = [
   {path: 'editarperfil', component: EditarperfilComponent},
   {path: 'productos/crearproductos', component: CrearproductosComponent},
   {path: 'detalleproducto/:id', component: DetalleproductoComponent},
+  {path: 'productos/listadoproductos', component: ListadoproductosComponent},
+  {path: 'productos/editarproducto/:id', component: EditarproductoComponent},
+
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 
 ];

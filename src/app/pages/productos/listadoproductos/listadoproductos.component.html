@@ -4,7 +4,7 @@
   <div *ngIf="productos.length === 0" class="alert alert-info text-center">
     No hay productos disponibles.
   </div>
-
+  <a routerLink="/productos/crearproductos" routerLinkActive="active" class="btn btn-outline-primary"> crear producto</a>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" *ngIf="productos.length > 0">
     <div class="col" *ngFor="let producto of productos">
       <div class="card h-100 shadow-sm">
@@ -18,7 +18,7 @@
             {{ producto.stock }} unidades disponibles
           </p>
           <div class="mt-auto">
-             <a routerLink="/detalleproducto/{{ producto.id }}" routerLinkActive="active" class="btn btn-outline-primary"> Ver detalle</a>
+             <a routerLink="/productos/editarproducto/{{ producto.id }}" routerLinkActive="active" class="btn btn-outline-primary"> editar producto</a>
           </div>
         </div>
       </div>

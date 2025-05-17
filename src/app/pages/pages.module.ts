@@ -22,7 +22,9 @@ import { MesomorfoComponent } from './mesomorfo/mesomorfo.component';
 import { EctomorfoComponent } from './ectomorfo/ectomorfo.component';
 import { CrearproductosComponent } from './productos/crearproductos/crearproductos.component';
 import { EditarperfilComponent } from './editarperfil/editarperfil.component';
-import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';  
+import { DetalleproductoComponent } from './productos/detalleproducto/detalleproducto.component';
+import { ListadoproductosComponent } from './productos/listadoproductos/listadoproductos.component';
+import { EditarproductoComponent } from './productos/editarproducto/editarproducto.component';  
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { DetalleproductoComponent } from './detalleproducto/detalleproducto.comp
     CrearproductosComponent,
     EditarperfilComponent,
     DetalleproductoComponent,
+    ListadoproductosComponent,
+    EditarproductoComponent,
     
   ],
   imports: [
@@ -72,7 +76,9 @@ import { DetalleproductoComponent } from './detalleproducto/detalleproducto.comp
     EctomorfoComponent,
     CrearproductosComponent,
     EditarperfilComponent,
-    DetalleproductoComponent
+    DetalleproductoComponent,
+    ListadoproductosComponent,
+    EditarproductoComponent
 
   ],
   providers: [
