@@ -8,7 +8,7 @@
     </div>
      <div class="form-group">
     <label>descripción</label>
-      <input type="text" formControlName="nombre" required>
+      <input type="text" formControlName="descripcion" required>
     </div>
 
     <div class="form-group">
@@ -39,8 +39,7 @@
 
     <!-- Botones de acción -->
     <div class="form-buttons">
-      <button type="submit" [disabled]="productoForm.invalid">actualizar Producto</button>
-    
+      <button  type="submit" [disabled]="productoForm.invalid">actualizar Producto</button>
     </div>
   </form>
 </div>

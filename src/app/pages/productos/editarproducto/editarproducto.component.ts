@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { productoservice } from '../../../services/api_producto/api_producto.service';
 import { Producto } from '../../../interfaces/producto';
 import { ActivatedRoute } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,10 +14,13 @@ import { ActivatedRoute } from '@angular/router';
 export class EditarproductoComponent {
  productoForm: FormGroup;
   productoId: number | null = null; // Para usar en actualizar/eliminar
+  id: number | undefined;
 
-  constructor(private fb: FormBuilder, private productoservice: productoservice, private route: ActivatedRoute) {
+
+  constructor(private fb: FormBuilder, private productoservice: productoservice, private route: ActivatedRoute, private router: Router) {
     this.productoForm = this.fb.group({
       nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
       precio: [null, [Validators.required, Validators.min(0)]],
       stock: [null, [Validators.required, Validators.min(0)]],
       categoria: ['', Validators.required],
@@ -27,8 +30,8 @@ export class EditarproductoComponent {
     ngOnInit() {
       const idParam = this.route.snapshot.paramMap.get('id');
       if (idParam) {
-        const id = Number(idParam);
-        this.productoservice.obtenerproductoporid(id).subscribe({
+         this.id = Number(idParam);
+        this.productoservice.obtenerproductoporid(this.id).subscribe({
           next: res => {
             this.productoForm.patchValue(res);
           },
@@ -39,8 +42,10 @@ export class EditarproductoComponent {
       }
     }
   onSubmit(): void {
+    console.log(this.id);
     if (this.productoForm.valid) {
       const producto: Producto = {
+        id: this.id,
         nombre: this.productoForm.value.nombre,
         descripcion: this.productoForm.value.descripcion,
         precio: this.productoForm.value.precio,
@@ -48,10 +53,12 @@ export class EditarproductoComponent {
         categoria: this.productoForm.value.categoria,
         imagen: this.productoForm.value.imagen
       };
-
-      this.productoservice.crearproductos(producto).subscribe({
+      
+      this.productoservice.actualizarproductos(producto).subscribe({
+        
         next: res => {
           console.log('Producto creado correctamente:', res);
+          this.router.navigate(['/productos/listadoproductos']);
           // ← guarda el ID para futuras acciones
         },
         error: err => {
@@ -60,4 +67,5 @@ export class EditarproductoComponent {
       });
     }
   }
+  
 }

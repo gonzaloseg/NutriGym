@@ -1,1 +1,37 @@
-<p>cesta works!</p>
+<div class="container py-5">
+  <h2 class="mb-4">Carrito de Compras</h2>
+
+  <!-- Si el carrito está vacío -->
+  <div *ngIf="!cartProductos.length" class="alert alert-info">
+    Tu carrito está vacío.
+  </div>
+
+  <!-- Lista de productos en el carrito -->
+  <div *ngIf="cartProductos.length">
+    <div class="row mb-4" *ngFor="let producto of cartProductos">
+      <div class="col-md-2">
+        <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="img-fluid rounded shadow-sm" />
+      </div>
+      <div class="col-md-7">
+        <h5 class="fw-bold mb-1">{{ producto.nombre }}</h5>
+        <p class="mb-1">{{ producto.descripcion }}</p>
+        <small class="text-muted">Categoría: {{ producto.categoria }}</small>
+      </div>
+      <div class="col-md-2 text-end">
+        <p class="fs-5 fw-bold text-success">{{ producto.precio | currency:'USD' }}</p>
+      </div>
+      <div class="col-md-1 text-end">
+        <button class="btn btn-sm btn-danger" (click)="eliminar(producto.id!)">
+          <i class="bi bi-trash"></i> <!-- Usa Bootstrap Icons si están disponibles -->
+        </button>
+      </div>
+      <hr class="my-3" />
+    </div>
+
+    <!-- Total y botón de compra -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <h4>Total: {{ totalCarrito | currency:'USD' }}</h4>
+      <button class="btn btn-success btn-lg" (click)="comprar()">Comprar</button>
+    </div>
+  </div>
+</div>

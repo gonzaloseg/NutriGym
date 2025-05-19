@@ -1,1 +1,26 @@
-<p>detalleproducto works!</p>
+<div class="container py-5">
+  <div class="row">
+    <!-- Imagen del producto -->
+    <div class="col-md-6">
+      <img [src]="producto?.imagen" class="img-fluid rounded shadow-sm" alt="{{ producto?.nombre }}">
+    </div>
+
+    <!-- Detalles del producto -->
+    <div class="col-md-6">
+      <h1 class="display-5 fw-bold mb-3">{{ producto?.nombre }}</h1>
+      <p class="text-muted mb-2">Categoría: <span class="fw-semibold">{{ producto?.categoria }}</span></p>
+      <p class="fs-5">{{ producto?.descripcion }}</p>
+      <p class="fs-4 fw-bold text-success">{{ producto?.precio | currency:'USD' }}</p>
+      <p *ngIf="producto?.stock && producto!.stock > 0">En stock: {{ producto?.stock }}</p>
+      <p *ngIf="producto?.stock === 0">Agotado</p>
+
+
+        <button
+        class="btn btn-dark btn-lg mt-4"
+        (click)="addToCart(producto!)"
+        [disabled]="!producto || producto.stock === 0" >
+        Agregar al carrito
+        </button>
+    </div>
+  </div>
+</div>

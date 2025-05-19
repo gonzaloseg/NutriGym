@@ -20,6 +20,9 @@
           <div class="mt-auto">
              <a routerLink="/productos/editarproducto/{{ producto.id }}" routerLinkActive="active" class="btn btn-outline-primary"> editar producto</a>
           </div>
+           <div class="mt-auto">
+           <a (click)="eliminarproductos(producto.id!)" class="btn btn-outline-danger">Eliminar producto</a>
+          </div>
         </div>
       </div>
     </div>

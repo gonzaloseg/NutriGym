@@ -20,4 +20,25 @@ productos: Producto[]=[];
       }
     });
   }
+  eliminarproductos(id: number): void {
+    this.productoservice.eliminarproductos(id).subscribe({
+      next: res => {
+        console.log('Producto eliminado correctamente:', res);
+        this.productoservice.obtenerproductos().subscribe(
+          {
+            next: (res: any) => {
+              this.productos = res;
+            },
+            error: (err: any) => {
+              console.error('Error al obtener productos:', err);
+            }
+          }
+        );
+      },
+      error: err => {
+        console.error('Error al eliminar producto:', err);
+      }
+    });
+  }
+   
 }

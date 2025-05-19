@@ -1,1 +1,42 @@
-<p>inicio works!</p>
+<section class="position-relative vh-100 text-white overflow-hidden">
+  <!-- Video de fondo -->
+  <video autoplay muted loop playsinline class="position-absolute w-100 h-100 object-fit-cover">
+    <source src="https://assets.gymshark.com/wl6q2in9o7k3/33DGfF3DaRZJogAEBFceK7/0e19992e05fbba12c61d87eae3444ccf/9x16_Vital_Sculpt_Ecom_Video_Edit_Outfit_Combined.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de video.
+  </video>
+
+  <!-- Capa oscura y contenido -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center text-center">
+    <div class="p-5 rounded">
+      <h1 class="display-4 fw-bold">Ropa deportiva para todos</h1>
+      <p class="lead">Explora nuestra nueva colección 2025</p>
+      <a  routerLink="/ropa" routerLinkActive="active" class="btn btn-light btn-lg mt-3">Compra ahora</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">Productos destacados</h2>
+
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let producto of productos">
+        <div class="card h-100 shadow-sm">
+          <img [src]="producto.imagen" class="card-img-top" alt="{{ producto.nombre }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <p class="card-text text-muted mb-1">{{ producto.categoria }}</p>
+            <p class="card-text fw-bold">{{ producto.precio | currency:'USD' }}</p>
+             <button
+                  class="btn btn-dark btn-lg mt-4"
+                    (click)="addToCart(producto!)"
+                    [disabled]="!producto || producto.stock === 0" >
+                     Agregar al carrito
+             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
