@@ -24,7 +24,9 @@ export class EditarproductoComponent {
       precio: [null, [Validators.required, Validators.min(0)]],
       stock: [null, [Validators.required, Validators.min(0)]],
       categoria: ['', Validators.required],
-      imagen: ['', Validators.required]
+      imagen: ['', Validators.required],
+      imagen2: ['', Validators.required],
+      imagen3: ['', Validators.required]
     });
   }
     ngOnInit() {
@@ -51,7 +53,9 @@ export class EditarproductoComponent {
         precio: this.productoForm.value.precio,
         stock: this.productoForm.value.stock,
         categoria: this.productoForm.value.categoria,
-        imagen: this.productoForm.value.imagen
+        imagen: this.productoForm.value.imagen,
+        imagen2: this.productoForm.value.imagen2,
+        imagen3: this.productoForm.value.imagen3
       };
       
       this.productoservice.actualizarproductos(producto).subscribe({

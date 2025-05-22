@@ -22,6 +22,7 @@ import { EditarperfilComponent } from './pages/editarperfil/editarperfil.compone
 import{DetalleproductoComponent} from './pages/productos/detalleproducto/detalleproducto.component';
 import { ListadoproductosComponent } from './pages/productos/listadoproductos/listadoproductos.component';
 import { EditarproductoComponent } from './pages/productos/editarproducto/editarproducto.component';
+import { RopaMujerComponent } from './pages/ropa-mujer/ropa-mujer.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -45,6 +46,8 @@ const routes: Routes = [
   {path: 'detalleproducto/:id', component: DetalleproductoComponent},
   {path: 'productos/listadoproductos', component: ListadoproductosComponent},
   {path: 'productos/editarproducto/:id', component: EditarproductoComponent},
+  {path: 'ropa-mujer', component: RopaMujerComponent},
+
 
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 

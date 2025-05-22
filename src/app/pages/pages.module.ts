@@ -24,7 +24,8 @@ import { CrearproductosComponent } from './productos/crearproductos/crearproduct
 import { EditarperfilComponent } from './editarperfil/editarperfil.component';
 import { DetalleproductoComponent } from './productos/detalleproducto/detalleproducto.component';
 import { ListadoproductosComponent } from './productos/listadoproductos/listadoproductos.component';
-import { EditarproductoComponent } from './productos/editarproducto/editarproducto.component';  
+import { EditarproductoComponent } from './productos/editarproducto/editarproducto.component';
+import { RopaMujerComponent } from './ropa-mujer/ropa-mujer.component';  
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { EditarproductoComponent } from './productos/editarproducto/editarproduc
     DetalleproductoComponent,
     ListadoproductosComponent,
     EditarproductoComponent,
+    RopaMujerComponent,
     
   ],
   imports: [
@@ -78,7 +80,8 @@ import { EditarproductoComponent } from './productos/editarproducto/editarproduc
     EditarperfilComponent,
     DetalleproductoComponent,
     ListadoproductosComponent,
-    EditarproductoComponent
+    EditarproductoComponent,
+    RopaMujerComponent
 
   ],
   providers: [
