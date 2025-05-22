@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { PoliticaprivaComponent } from './politicapriva/politicapriva.component';
 import { RecetasComponent } from './recetas/recetas.component';
-import { RopaComponent } from './ropa/ropa.component';
+import { RopaComponent } from './ropas/ropa/ropa.component';
 import { RegisterComponent } from './register/register.component';
 import { EndomorfoComponent } from './endomorfo/endomorfo.component';
 import { MesomorfoComponent } from './mesomorfo/mesomorfo.component';
@@ -25,7 +25,7 @@ import { EditarperfilComponent } from './editarperfil/editarperfil.component';
 import { DetalleproductoComponent } from './productos/detalleproducto/detalleproducto.component';
 import { ListadoproductosComponent } from './productos/listadoproductos/listadoproductos.component';
 import { EditarproductoComponent } from './productos/editarproducto/editarproducto.component';
-import { RopaMujerComponent } from './ropa-mujer/ropa-mujer.component';  
+import { RopaMujerComponent } from './ropas/ropa-mujer/ropa-mujer.component';  
 
 @NgModule({
   declarations: [

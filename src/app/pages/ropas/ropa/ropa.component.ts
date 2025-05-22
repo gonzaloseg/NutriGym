@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Producto } from '../../interfaces/producto';
-import { productoservice } from '../../services/api_producto/api_producto.service';
+import { Producto } from '../../../interfaces/producto';
+import { productoservice } from '../../../services/api_producto/api_producto.service';
 @Component({
   selector: 'app-ropa',
   templateUrl: './ropa.component.html',

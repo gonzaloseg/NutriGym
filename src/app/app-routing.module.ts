@@ -11,7 +11,7 @@ import { ContactaComponent } from './pages/contacta/contacta.component';
 import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 import { PoliticaprivaComponent } from './pages/politicapriva/politicapriva.component';
 import{RecetasComponent} from './pages/recetas/recetas.component';
-import { RopaComponent } from './pages/ropa/ropa.component';
+import { RopaComponent } from './pages/ropas/ropa/ropa.component';
 import{sesionGuard} from './guards/sesion.guard';
 import { RegisterComponent } from './pages/register/register.component';
 import{EndomorfoComponent} from './pages/endomorfo/endomorfo.component';
@@ -22,7 +22,7 @@ import { EditarperfilComponent } from './pages/editarperfil/editarperfil.compone
 import{DetalleproductoComponent} from './pages/productos/detalleproducto/detalleproducto.component';
 import { ListadoproductosComponent } from './pages/productos/listadoproductos/listadoproductos.component';
 import { EditarproductoComponent } from './pages/productos/editarproducto/editarproducto.component';
-import { RopaMujerComponent } from './pages/ropa-mujer/ropa-mujer.component';
+import { RopaMujerComponent } from './pages/ropas/ropa-mujer/ropa-mujer.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
