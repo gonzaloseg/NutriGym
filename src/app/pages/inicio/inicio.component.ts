@@ -9,18 +9,27 @@ import { CartService } from '../../services/cartservice/cartservice.service';
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
- productos: Producto[] = [];
+  productos: Producto[] = [];
+
+  ropaHombre: Producto[] = [];
+  ropaMujer: Producto[] = [];
+  suplementos: Producto[] = [];
 
   constructor(private productoService: productoservice, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.productoService.obtenerproductos().subscribe({
-      next: (data) => this.productos = data,
+      next: (data) => {
+        this.productos = data;
+        this.ropaHombre = data.filter(p => p.categoria === 'ropa_hombre').slice(0, 4);
+        this.ropaMujer = data.filter(p => p.categoria === 'ropa_mujer').slice(0, 4);
+        this.suplementos = data.filter(p => p.categoria === 'suplementacion').slice(0, 4);
+      },
       error: (err) => console.error('Error al cargar productos:', err)
     });
   }
 
-  addToCart(Producto: Producto): void {
-    this.cartService.addToCart(Producto);
+  addToCart(producto: Producto): void {
+    this.cartService.addToCart(producto);
   }
 }

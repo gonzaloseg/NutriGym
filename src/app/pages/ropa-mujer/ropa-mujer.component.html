@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <h2 class="text-center mb-4">Productos de Ropa para Hombre</h2>
+  <h2 class="text-center mb-4">Productos de Ropa para mujeres</h2>
 
   <div *ngIf="productos.length === 0" class="alert alert-info text-center">
     No hay productos disponibles.
@@ -18,7 +18,7 @@
             {{ producto.stock }} unidades disponibles
           </p>
           <div class="mt-auto">
-             <a routerLink="/detalleproducto/{{ producto.id }}" routerLinkActive="active" class="btn btn-outline-primary"> Ver detalle</a>
+             <a routerLink="/detalleproducto/{{ producto.id }}" routerLinkActive="active" class="btn btn-outline-primary"> Ver detalles</a>
           </div>
         </div>
       </div>
