@@ -3,7 +3,7 @@
         <img src="/imagenes/Logotipo.png" alt="Logo Suplementos">
     </div>
     <nav>
-        <a routerLink="/inicio" routerLinkActive="active">inicio</a>
+        <a routerLink="/inicio" routerLinkActive="active">Inicio</a>
 
         <div class="dropdown">
             <a>Productos</a>
@@ -12,12 +12,12 @@
                 <a routerLink="/suplementos" routerLinkActive="active">Suplementos</a>
                 <a routerLink="/recetas" routerLinkActive="active">Recetas</a>
                 <a routerLink="/rutinas" routerLinkActive="active">Rutinas</a>
-                <a *ngIf="roleIsAdmin()" routerLink="/productos/listadoproductos" routerLinkActive="active">editar
+                <a *ngIf="roleIsAdmin()" routerLink="/productos/listadoproductos" routerLinkActive="active">Editar
                     Producto</a>
             </div>
         </div>
 
-        <a routerLink="/favoritos" routerLinkActive="active">favoritos</a>
+        <a routerLink="/favoritos" routerLinkActive="active">Favoritos</a>
 
         <a routerLink="/cesta" class="btn btn-outline-light me-3 position-relative">
             <i class="bi bi-cart-fill"></i>
