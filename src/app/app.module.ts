@@ -6,16 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
-import { ServicesComponent } from './services/services.component';
-import { ReactiveFormsModule } from '@angular/forms';  // Importa ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServicesComponent,
-    
 
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';  // Importa ReactiveFormsM
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
-   
+
 
   ],
   providers: [

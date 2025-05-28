@@ -15,7 +15,7 @@ export class InicioComponent {
   ropaMujer: Producto[] = [];
   suplementos: Producto[] = [];
 
-  constructor(private productoService: productoservice, private cartService: CartService) {}
+  constructor(private productoService: productoservice, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.productoService.obtenerproductos().subscribe({
@@ -30,6 +30,14 @@ export class InicioComponent {
   }
 
   addToCart(producto: Producto): void {
-    this.cartService.addToCart(producto);
+    console.log("Ha entrado en addToCart")
+    this.cartService.agregarProducto(producto.id!).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 }

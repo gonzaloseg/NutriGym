@@ -8,29 +8,47 @@
 
   <!-- Lista de productos en el carrito -->
   <div *ngIf="cartProductos.length">
-    <div class="row mb-4" *ngFor="let producto of cartProductos">
-      <div class="col-md-2">
+    <div class="row mb-4 align-items-center flex-column flex-md-row text-center text-md-start"
+      *ngFor="let producto of cartProductos">
+
+      <!-- Imagen -->
+      <div class="col-md-2 mb-2 mb-md-0">
         <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="img-fluid rounded shadow-sm" />
       </div>
-      <div class="col-md-7">
+
+      <!-- Nombre y descripción -->
+      <div class="col-md-5 mb-2 mb-md-0">
         <h5 class="fw-bold mb-1">{{ producto.nombre }}</h5>
         <p class="mb-1">{{ producto.descripcion }}</p>
-        <small class="text-muted">Categoría: {{ producto.categoria }}</small>
+        <small class="text-muted">Stock disponible: {{ producto.stock }}</small>
       </div>
-      <div class="col-md-2 text-end">
-        <p class="fs-5 fw-bold text-success">{{ producto.precio | currency:'USD' }}</p>
+
+      <!-- Precio -->
+      <div class="col-md-3 d-flex justify-content-center justify-content-md-end align-items-center mb-2 mb-md-0">
+        <div class="btn-group me-2" role="group">
+          <button class="btn btn-outline-secondary btn-sm" (click)="decrementarCantidad(producto.productoId)">-</button>
+          <button class="btn btn-outline-primary btn-sm" disabled>{{ producto.cantidad }}</button>
+          <button class="btn btn-outline-secondary btn-sm" (click)="incrementarCantidad(producto.productoId)">+</button>
+        </div>
+        <p class="fs-5 fw-bold text-success mb-0 ms-2">
+          {{ producto.precio | currency:'USD' }}
+        </p>
       </div>
-      <div class="col-md-1 text-end">
-        <button class="btn btn-sm btn-danger" (click)="eliminar(producto.id!)">
-          <i class="bi bi-trash"></i> <!-- Usa Bootstrap Icons si están disponibles -->
+
+      <!-- Botón eliminar -->
+      <div class="col-md-2 d-flex justify-content-center justify-content-md-end align-items-center">
+        <button class="btn btn-sm btn-danger" (click)="eliminar(producto.productoId)">
+          <i class="bi bi-trash"></i>
         </button>
       </div>
-      <hr class="my-3" />
+
+      <hr class="my-3 w-100 d-none d-md-block" />
     </div>
 
     <!-- Total y botón de compra -->
-    <div class="d-flex justify-content-between align-items-center mt-4">
-      <h4>Total: {{ totalCarrito | currency:'USD' }}</h4>
+    <div
+      class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 text-center text-md-start">
+      <h4 class="mb-3 mb-md-0">Total: {{ totalCarrito | currency:'USD' }}</h4>
       <button class="btn btn-success btn-lg" (click)="comprar()">Comprar</button>
     </div>
   </div>

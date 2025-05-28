@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/api_usuario_stock/api_usuario_stock.service';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +9,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   usuario = {
-    
+
     correoElectronico: '',
     contrasena: '',
   };
 
   constructor(private api_usuario_stock: UsuarioService,
-     private router: Router
+    private router: Router
   ) { }
 
   iniciarSesion() {
     this.api_usuario_stock.iniciarSesion(this.usuario).subscribe({
       next: res => {
-        console.log("Rol:",res.rol_usuario);
+        console.log("Rol:", res.rol_usuario);
         console.log('login correcto:', res);
         sessionStorage.setItem('usuario', JSON.stringify(res));
         this.router.navigate(['/inicio']); // Redirección aquí

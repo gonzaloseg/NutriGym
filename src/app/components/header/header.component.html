@@ -1,32 +1,32 @@
-
 <header>
     <div class="logo">
         <img src="/imagenes/Logotipo.png" alt="Logo Suplementos">
     </div>
     <nav>
-        <a routerLink="/inicio" routerLinkActive="active">inicio</a> 
-        
+        <a routerLink="/inicio" routerLinkActive="active">inicio</a>
+
         <div class="dropdown">
             <a>Productos</a>
             <div class="dropdown-content">
                 <a routerLink="/ropa" routerLinkActive="active">Ropa</a>
-                <a routerLink="/suplementos"  routerLinkActive="active">Suplementos</a>
+                <a routerLink="/suplementos" routerLinkActive="active">Suplementos</a>
                 <a routerLink="/recetas" routerLinkActive="active">Recetas</a>
                 <a routerLink="/rutinas" routerLinkActive="active">Rutinas</a>
-                <a *ngIf="roleIsAdmin()" routerLink="/productos/listadoproductos" routerLinkActive="active">editar Producto</a>
+                <a *ngIf="roleIsAdmin()" routerLink="/productos/listadoproductos" routerLinkActive="active">editar
+                    Producto</a>
             </div>
         </div>
 
         <a routerLink="/favoritos" routerLinkActive="active">favoritos</a>
-      
+
         <a routerLink="/cesta" class="btn btn-outline-light me-3 position-relative">
             <i class="bi bi-cart-fill"></i>
             @if(cartCount() > 0){
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{ cartCount() }}
-        <span class="visually-hidden">Cursos en el carrito</span>
-        </span>
-        }
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ cartCount() }}
+                <span class="visually-hidden">Cursos en el carrito</span>
+            </span>
+            }
         </a>
         <a routerLink="/perfil" routerLinkActive="active">
             <i class="bi bi-person"></i>

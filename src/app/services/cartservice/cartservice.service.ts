@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Producto } from '../../interfaces/producto';
+import { UsuarioService } from '../usuarioservice/usuario.service';
+import { AgregarProductoDTO } from '../../interfaces/agregarproductodto';
+import { CarritoItemDTO } from '../../interfaces/carritoitemdto';
 
 
 @Injectable({
@@ -9,85 +12,68 @@ import { Producto } from '../../interfaces/producto';
 })
 export class CartService {
 
-  private readonly API_URL = 'http://localhost:8080/api/purchases';
-  private readonly STORAGE_KEY = 'cart';
+  private readonly API_URL = 'http://localhost:8080/api/carrito';
+  private cartTotalCount = signal<number>(0); // 👈 NUEVO
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private usuarioService: UsuarioService
+  ) { }
 
-  /**
-   * Añade un curso al carrito. Evita duplicados.
-   */
-  addToCart(Producto: Producto): void {
-    const cartCourses = this.getCartCourses();
-     cartCourses.push(Producto);
-      this.saveCart(cartCourses);
+  // 👇 Método para exponer el contador como signal reactivo
+  getCartCountSignal() {
+    return this.cartTotalCount;
   }
 
-  /**
-   * Elimina un curso del carrito por UUID.
-   */
-  removeFromCart(Productoid: number): Producto[] {
-    const cartCourses = this.getCartCourses()
-      .filter(course => course.id !== Productoid);
-    this.saveCart(cartCourses);
-    return this.getCartCourses();
+  // 👇 Método para actualizar el contador
+  updateCartCount(): void {
+    this.obtenerCarrito().subscribe({
+      next: (productos: CarritoItemDTO[]) => {
+        const total = productos.reduce((sum, item) => sum + item.cantidad, 0);
+        this.cartTotalCount.set(total);
+      },
+      error: () => this.cartTotalCount.set(0)
+    });
   }
 
-  /**
-   * Devuelve todos los cursos del carrito.
-   */
-  getCartCourses(): Producto[] {
-    try {
-      const data = localStorage.getItem(this.STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
-    } catch (error) {
-      console.error('Error al leer el carrito:', error);
-      return [];
+  private getUsuarioId(): number {
+    const id = this.usuarioService.getUsuarioId();
+    if (id === null) {
+      throw new Error('Usuario no autenticado');
     }
+    return id;
   }
 
-  /**
-   * Limpia completamente el carrito.
-   */
-  clearCart(): void {
-    localStorage.removeItem(this.STORAGE_KEY);
+  agregarProducto(productoId: number, cantidad: number = 1): Observable<any> {
+    const dto: AgregarProductoDTO = {
+      usuarioId: this.getUsuarioId(),
+      productoId,
+      cantidad
+    };
+    return this.http.post(`${this.API_URL}/agregar`, dto).pipe(
+      tap(() => this.updateCartCount()) // 👈 actualizar contador al agregar
+    );;
   }
 
-  /**
-   * Compra todos los cursos del carrito
-   */
- buyCart(): Observable<any> {
-  const token = localStorage.getItem('auth_token');
-
-  if (!token) {
-    return throwError(() => new Error('Usuario no autenticado'));
+  obtenerCarrito(): Observable<CarritoItemDTO[]> {
+    return this.http.get<CarritoItemDTO[]>(`${this.API_URL}?usuarioId=${this.getUsuarioId()}`);
   }
 
-  const cartCourses: Producto[] = this.getCartCourses();
-
-  if (!cartCourses.length) {
-    return throwError(() => new Error('El carrito está vacío'));
+  comprar(): Observable<any> {
+    return this.http.post(`${this.API_URL}/comprar?usuarioId=${this.getUsuarioId()}`, {}).pipe(
+      tap(() => this.cartTotalCount.set(0)) // 👈 reset después de compra
+    );
   }
 
-  // Extraer sólo los IDs definidos
-  const id: number[] = cartCourses
-    .map(course => course.id)
-    .filter((id): id is number => id !== undefined);
-
-  return this.http.post(`${this.API_URL}`, { id }).pipe(
-    tap(() => this.clearCart()),
-    catchError(error => {
-      console.error('Error al comprar los cursos:', error);
-      return throwError(() => new Error('Error al comprar los cursos'));
-    })
-  );
-}
-
-
-  /**
-   * Guarda el carrito en localStorage.
-   */
-  private saveCart(courses: Producto[]): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(courses));
-  }
+  eliminar(productoId: number): Observable<any> {
+    const usuarioId = this.getUsuarioId(); // Implementa cómo recuperas esto
+    return this.http.delete(`${this.API_URL}/eliminar`, {
+      params: {
+        usuarioId: usuarioId.toString(),
+        productoId: productoId.toString()
+      }
+    }).pipe(
+      tap(() => this.updateCartCount()) // 👈 reset después de compra
+    );
+  }
 }

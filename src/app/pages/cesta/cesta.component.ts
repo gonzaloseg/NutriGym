@@ -1,29 +1,88 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cartservice/cartservice.service';
 import { Producto } from '../../interfaces/producto';
+import { CarritoItemDTO } from '../../interfaces/carritoitemdto';
 
 @Component({
   selector: 'app-cesta',
   templateUrl: './cesta.component.html',
   styleUrl: './cesta.component.css'
 })
-export class CestaComponent {
-  cartProductos: Producto[] = [];
-constructor(private cartService: CartService) {}
+export class CestaComponent implements OnInit {
+  cartProductos: CarritoItemDTO[] = [];
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartProductos = this.cartService.getCartCourses();
+    this.actualizarCarrito();
   }
+
   eliminar(Productoid: number): void {
-
-    this.cartProductos = this.cartService.removeFromCart(Productoid);
-    
+    // De momento no tenemos un endpoint para eliminar directamente
+    // Aquí podrías simularlo con cantidad - producto.numero (pendiente implementar)
+    this.cartService.eliminar(Productoid).subscribe({
+      next: (data) => {
+        console.log("Producto eliminado correctamente", data);
+        this.actualizarCarrito();
+      },
+      error: (error) => {
+        console.error("Error al eliminar producto", error);
+      }
+    });
   }
+
   comprar(): void {
-    this.cartService.buyCart();
+    this.cartService.comprar().subscribe({
+      next: () => {
+        this.cartProductos = [];
+        alert('Compra realizada con éxito.');
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Error al realizar la compra.');
+      }
+    });
   }
 
-get totalCarrito(): number {
-  return this.cartProductos.reduce((total, prod) => total + (prod.precio || 0), 0);
-}
+  get totalCarrito(): number {
+    return this.cartProductos.reduce(
+      (total, prod) => total + ((prod.precio || 0) * (prod.cantidad || 1)),
+      0
+    );
+  }
+
+  // 🔧 Métodos desactivados temporalmente
+  decrementarCantidad(productoId: number): void {
+    this.cartService.agregarProducto(productoId, -1).subscribe({
+      next: (data) => {
+        this.actualizarCarrito();
+      },
+      error: (error) => {
+        console.error(error)
+      }
+    });
+  }
+
+  incrementarCantidad(productoId: number): void {
+    this.cartService.agregarProducto(productoId, 1).subscribe({
+      next: (data) => {
+        this.actualizarCarrito();
+      },
+      error: (error) => {
+        console.error(error)
+      }
+    });
+  }
+
+  private actualizarCarrito(): void {
+    this.cartService.obtenerCarrito().subscribe({
+      next: (productos: CarritoItemDTO[]) => {
+        this.cartProductos = productos;
+      },
+      error: () => {
+        this.cartProductos = [];
+        alert('No se pudo obtener el carrito.');
+      }
+    });
+  }
 }

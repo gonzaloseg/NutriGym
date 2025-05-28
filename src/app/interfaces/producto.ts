@@ -8,4 +8,5 @@ export interface Producto {
     precio: number;
     imagen2: string;
     imagen3: string;
+    numero?: number;
 }
