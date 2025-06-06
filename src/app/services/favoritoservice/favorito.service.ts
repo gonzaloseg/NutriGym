@@ -25,23 +25,30 @@ export class FavoritoService {
   }
 
   agregarAFavoritos(productoId: number): Observable<any> {
-    const params = new HttpParams()
-      .set('usuarioId', this.getUsuarioId().toString())
-      .set('productoId', productoId.toString());
+  // Construye los parámetros con el ID del usuario y el ID del producto
+  const params = new HttpParams()
+    .set('usuarioId', this.getUsuarioId().toString()) // ID del usuario autenticado
+    .set('productoId', productoId.toString());        // ID del producto a agregar
 
-    return this.http.post(this.API_URL, null, { params });
-  }
+  // Envía una solicitud POST sin cuerpo, pasando los parámetros por URL
+  return this.http.post(this.API_URL, null, { params });
+}
 
   eliminarDeFavoritos(productoId: number): Observable<any> {
-    const params = new HttpParams()
-      .set('usuarioId', this.getUsuarioId().toString())
-      .set('productoId', productoId.toString());
+  // Construye los mismos parámetros que en el método anterior
+  const params = new HttpParams()
+    .set('usuarioId', this.getUsuarioId().toString()) // ID del usuario autenticado
+    .set('productoId', productoId.toString());        // ID del producto a eliminar
 
-    return this.http.delete(this.API_URL, { params });
-  }
+  // Envía una solicitud DELETE con los parámetros
+  return this.http.delete(this.API_URL, { params });
+}
+obtenerFavoritos(): Observable<FavoritoDTO[]> {
+  // Construye los parámetros usando el ID del usuario actual
+  const params = new HttpParams()
+    .set('usuarioId', this.getUsuarioId().toString()); // ID del usuario
 
-  obtenerFavoritos(): Observable<FavoritoDTO[]> {
-    const params = new HttpParams().set('usuarioId', this.getUsuarioId().toString());
-    return this.http.get<FavoritoDTO[]>(this.API_URL, { params });
-  }
+  // Envía una solicitud GET y espera una lista de objetos FavoritoDTO
+  return this.http.get<FavoritoDTO[]>(this.API_URL, { params });
+}
 }

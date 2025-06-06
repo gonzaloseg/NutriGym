@@ -51,7 +51,7 @@ export class CartService {
       cantidad
     };
     return this.http.post(`${this.API_URL}/agregar`, dto).pipe(
-      tap(() => this.updateCartCount()) // 👈 actualizar contador al agregar
+      tap(() => this.updateCartCount()) // actualizar contador al agregar
     );;
   }
 
@@ -61,7 +61,7 @@ export class CartService {
 
   comprar(): Observable<any> {
     return this.http.post(`${this.API_URL}/comprar?usuarioId=${this.getUsuarioId()}`, {}).pipe(
-      tap(() => this.cartTotalCount.set(0)) // 👈 reset después de compra
+      tap(() => this.cartTotalCount.set(0)) //  reset después de compra
     );
   }
 
@@ -73,7 +73,7 @@ export class CartService {
         productoId: productoId.toString()
       }
     }).pipe(
-      tap(() => this.updateCartCount()) // 👈 reset después de compra
+      tap(() => this.updateCartCount()) //  reset después de compra
     );
   }
 }

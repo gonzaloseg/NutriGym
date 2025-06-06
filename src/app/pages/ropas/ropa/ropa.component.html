@@ -14,8 +14,8 @@
           <p class="card-text text-success fw-bold mb-1">
             {{ producto.precio | currency:'EUR' }}
           </p>
-          <p class="card-text text-muted mb-3">
-            {{ producto.stock }} unidades disponibles
+          <p *ngIf="producto.stock < 20" class="card-text text-muted mb-3">
+              {{ producto.stock }} unidades disponibles
           </p>
           <div class="mt-auto">
              <a routerLink="/detalleproducto/{{ producto.id }}" routerLinkActive="active" class="btn btn-outline-primary"> Ver detalles </a>

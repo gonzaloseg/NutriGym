@@ -35,31 +35,35 @@ export class DetalleproductoComponent {
     });
   }
 
-  toggleFavorito(): void {
-    if (!this.producto || this.producto.id === undefined) return;
+ toggleFavorito(): void {
+  // Si no hay producto o no tiene ID, salir
+  if (!this.producto || this.producto.id === undefined) return;
 
-    const productoId = this.producto.id;
+  const productoId = this.producto.id;
 
-    if (this.esFavorito) {
-      this.favoritoService.eliminarDeFavoritos(productoId).subscribe(() => {
-        this.esFavorito = false;
-      });
-    } else {
-      this.favoritoService.agregarAFavoritos(productoId).subscribe(() => {
-        this.esFavorito = true;
-      });
-    }
-  }
-
-  addToCart(Producto: Producto): void {
-    this.cartService.agregarProducto(Producto.id!).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (error) => {
-        console.error(error);
-      }
+  // Si ya es favorito, lo elimina
+  if (this.esFavorito) {
+    this.favoritoService.eliminarDeFavoritos(productoId).subscribe(() => {
+      this.esFavorito = false; // Actualiza el estado local
+    });
+  } else {
+    // Si no es favorito, lo agrega
+    this.favoritoService.agregarAFavoritos(productoId).subscribe(() => {
+      this.esFavorito = true; // Actualiza el estado local
     });
   }
+}
+
+ addToCart(Producto: Producto): void {
+  // Llama al servicio de carrito para agregar el producto por su ID
+  this.cartService.agregarProducto(Producto.id!).subscribe({
+    next: (data) => {
+      console.log(data); // Muestra la respuesta exitosa en consola
+    },
+    error: (error) => {
+      console.error(error); // Muestra errores en consola si ocurren
+    }
+  });
+}
 
 }

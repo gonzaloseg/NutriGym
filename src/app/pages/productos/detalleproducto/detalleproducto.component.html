@@ -49,8 +49,9 @@
           [title]="esFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos'">
           <i [ngClass]="esFavorito ? 'bi bi-heart-fill' : 'bi bi-heart'"></i>
         </button>
-        <p *ngIf="producto?.stock && producto!.stock > 0">En stock: {{ producto?.stock }}</p>
-        <p *ngIf="producto?.stock === 0">Agotado</p>
+        <h1></h1>
+       <p class="text-danger" *ngIf="producto!.stock > 0 && producto!.stock < 20">En stock: {{ producto?.stock }} </p>
+        <p *ngIf="producto?.stock === 0" class="text-danger">Agotado</p>
 
         <button class="btn btn-dark btn-lg mt-4" (click)="addToCart(producto!)"
           [disabled]="!producto || producto.stock === 0">
