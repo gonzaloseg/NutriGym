@@ -25,7 +25,7 @@ export class CartService {
     return this.cartTotalCount;
   }
 
-  // 👇 Método para actualizar el contador
+  // Método para actualizar el contador
   updateCartCount(): void {
     this.obtenerCarrito().subscribe({
       next: (productos: CarritoItemDTO[]) => {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cartservice/cartservice.service';
 import { Producto } from '../../interfaces/producto';
 import { CarritoItemDTO } from '../../interfaces/carritoitemdto';
-
+declare var bootstrap: any;
 @Component({
   selector: 'app-cesta',
   templateUrl: './cesta.component.html',
@@ -36,6 +36,11 @@ export class CestaComponent implements OnInit {
       next: () => {
         this.cartProductos = [];
         alert('Compra realizada con éxito.');
+        const modalElement = document.getElementById('modalCompra');
+        if (modalElement) {
+          const modalInstance = bootstrap.Modal.getInstance(modalElement);
+          modalInstance?.hide();
+        }
       },
       error: (err) => {
         console.error(err);
@@ -51,7 +56,7 @@ export class CestaComponent implements OnInit {
     );
   }
 
-  // 🔧 Métodos desactivados temporalmente
+  //Métodos desactivados temporalmente
   decrementarCantidad(productoId: number): void {
     this.cartService.agregarProducto(productoId, -1).subscribe({
       next: (data) => {
@@ -85,4 +90,14 @@ export class CestaComponent implements OnInit {
       }
     });
   }
+
+  abrirModal() {
+    const modalElement = document.getElementById('modalCompra');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
+  }
+
+  
 }
